@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login_package.Choose"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+
+    <Button
+        android:id="@+id/btn_prec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/prec_pearl"
+        android:background="@drawable/btn_resource"
+        android:layout_marginTop="100dp"/>
+
+    <Button
+        android:id="@+id/btn_summarus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sumarus"
+        android:background="@drawable/btn_resource"
+        android:layout_marginTop="50dp"/>
+
+    <Button
+        android:id="@+id/btn_waasek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/waasek"
+        android:background="@drawable/btn_resource"
+        android:layout_marginTop="50dp"/>
+
+    <Button
+        android:id="@+id/btn_others"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/others"
+        android:background="@drawable/btn_resource"
+        android:layout_marginTop="50dp"/>
+</LinearLayout>

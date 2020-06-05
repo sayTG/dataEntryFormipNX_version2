@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardBackgroundColor="#D50000"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/call_who"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/text_obinna"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/obinna_oforka"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/text_monday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/monday_uyana"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/text_ifeanyi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ifeanyi_ikemenaogu"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/text_paul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/paul_osisiogu"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/text_samuel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/samuel_nnaocha"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/text_afeez"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/afeez_obiende"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>

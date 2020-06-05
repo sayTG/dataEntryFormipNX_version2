@@ -1,0 +1,94 @@
+package com.example.dataentryformipnx_2.login_package;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
+import com.example.dataentryformipnx_2.MainActivity;
+import com.example.dataentryformipnx_2.R;
+import com.example.dataentryformipnx_2.choose_sheet.Others;
+import com.example.dataentryformipnx_2.choose_sheet.PrecPearl;
+import com.example.dataentryformipnx_2.choose_sheet.Summarus;
+import com.example.dataentryformipnx_2.choose_sheet.Waasek;
+import com.example.dataentryformipnx_2.ui.home.HomeFragment;
+
+public class Choose extends AppCompatActivity {
+    private Button btn_prec, btn_summarus, btn_waasek, btn_others;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_choose);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        btn_prec = (Button)findViewById(R.id.btn_prec);
+        btn_summarus = (Button)findViewById(R.id.btn_summarus);
+        btn_waasek = (Button)findViewById(R.id.btn_waasek);
+        btn_others = (Button)findViewById(R.id.btn_others);
+
+        btn_prec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String precPearl = "Prec Pearl";
+                Intent precIntent = new Intent(Choose.this, MainActivity.class);
+                precIntent.putExtra("precPearl", precPearl );
+                startActivity(precIntent);
+
+
+            }
+        });
+
+        btn_summarus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String sumarus = "Sumarus";
+                Intent summarusIntent = new Intent(Choose.this, MainActivity.class);
+                summarusIntent.putExtra("sumarus", sumarus );
+                startActivity(summarusIntent);
+            }
+        });
+
+        btn_waasek.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String waasek = "Waasek";
+                Intent waasekIntent = new Intent(Choose.this, MainActivity.class);
+                waasekIntent.putExtra("waasek", waasek );
+                startActivity(waasekIntent);
+
+            }
+        });
+
+        btn_others.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String others = "Others";
+                Intent othersIntent = new Intent(Choose.this, MainActivity.class);
+                othersIntent.putExtra("others", others );
+                startActivity(othersIntent);
+
+            }
+        });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
+
+}

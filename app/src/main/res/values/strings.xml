@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">DataEntryFormipNX_2</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">DASHBOARD</string>
+    <string name="nav_header_subtitle">INFRASTRUCTURE MAINTENANCE</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_add">Data Entry</string>
+    <string name="menu_remediation">Remediation</string>
+    <string name="menu_critical">Critical/Urgent</string>
+    <string name="menu_about">About</string>
+
+    <string name="home_second">Home Second</string>
+    <string name="home_message">Having issues? \nClick on the card below</string>
+    <string name="call_osp">Call OSP</string>
+    <string name="call_interns">Call Interns</string>
+    <string name="call_backend">Call BackEnd</string>
+    <string name="prec_pearl">PREC PEARL</string>
+    <string name="sumarus">SUMARUS</string>
+    <string name="waasek">WAASEK</string>
+    <string name="others">OTHERS</string>
+    <string name="email">EMAIL
+    </string>
+    <string name="password">PASSWORD
+    </string>
+    <string name="login">LOGIN</string>
+    <string name="call_who">Click who to call</string>
+    <string name="afeez_obiende">Afeez Obiende</string>
+    <string name="samuel_nnaocha">Samuel Nnaocha</string>
+    <string name="paul_osisiogu">Paul Osisiogu</string>
+    <string name="ifeanyi_ikemenaogu">Ifeanyi Ikemenaogu</string>
+    <string name="monday_uyana">Monday Uyana</string>
+    <string name="obinna_oforka">Obinna Oforka</string>
+    <string name="arogbodo_mololuwa">Arogbodo Mololuwa</string>
+    <string name="busari_thankgod">Busari ThankGod</string>
+    <string name="adelaja_adegoke_sheriff">Adelaja Adegoke Sheriff</string>
+    <string name="samuel_oladosu_tobi">Samuel Oladosu Tobi</string>
+    <string name="ayorinde_adesegun">Ayorinde Adesegun</string>
+    <string name="ayo_oyebamiji">Ayo Oyebanji</string>
+    <string name="call_manager">Call manager</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save">Save</string>
+    <string name="enter_incident_name">Enter Incident Name</string>
+    <string name="victoria_island">Victoria Island</string>
+    <string name="lekki">Lekki</string>
+    <string name="mainland">Mainland</string>
+    <string name="ikoyi">Ikoyi</string>
+    <string name="lagos_island">Lagos Island</string>
+    <string name="feeder">Feeder</string>
+    <string name="distribution">Distribution</string>
+    <string name="affected_pon_port">Affected PON Port</string>
+    <string name="location">Location</string>
+    <string name="rfo">RFO</string>
+    <string name="measures_taken_to_avoid_repeated_outages">Measures taken to avoid repeated outages</string>
+    <string name="point_of_failure">Point of Failure</string>
+    <string name="mst_tail">MST Tail</string>
+</resources>

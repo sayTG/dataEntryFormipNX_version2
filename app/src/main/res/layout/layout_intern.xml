@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="#D50000"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="20dp">
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/call_who"
+                android:layout_gravity="center"
+                android:textSize="25sp"
+                android:layout_marginTop="10dp"
+                android:textColor="#ffffff"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/text_mololuwa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/arogbodo_mololuwa"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/text_tg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/busari_thankgod"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+</androidx.cardview.widget.CardView>
