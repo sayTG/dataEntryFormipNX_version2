@@ -12,8 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.data_entry.PreventiveMaintenance"></activity>
-        <activity android:name=".ui.data_entry.CorrectiveMaintenance" />
+        <activity android:name=".view.ViewCritical"
+            android:label="Critical Data"/>
+        <activity android:name=".view.ViewRemediation"
+            android:label="Remediation Data"/>
+        <activity android:name=".view.ViewCorrective"
+            android:label="Corrective Data"/>
+        <activity android:name=".view.ViewPreventive"
+            android:label="Preventive Data"/>
+        <activity android:name=".ui.data_entry.PreventiveMaintenance"
+            android:label="Preventive Sheet"/>
+        <activity android:name=".ui.data_entry.CorrectiveMaintenance"
+            android:label="Corrective Sheet"/>
         <activity
             android:name=".login_package.Choose"
             android:label="Choose"

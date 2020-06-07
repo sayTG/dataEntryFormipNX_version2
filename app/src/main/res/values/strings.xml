@@ -59,4 +59,11 @@
     <string name="measures_taken_to_avoid_repeated_outages">Measures taken to avoid repeated outages</string>
     <string name="point_of_failure">Point of Failure</string>
     <string name="mst_tail">MST Tail</string>
+    <string name="what_is_the_issue">What is the issue?</string>
+    <string name="what_is_the_risk">What is the risk?</string>
+    <string name="element_affected">Element Affected</string>
+    <string name="corrective_maintenance">Corrective Maintenance</string>
+    <string name="preventive_maintenance">Preventive Maintenance</string>
+    <string name="view_entries">View Entries</string>
+    <string name="log_out">Log out</string>
 </resources>
