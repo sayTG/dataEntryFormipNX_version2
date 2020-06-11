@@ -1,6 +1,7 @@
 package com.example.dataentryformipnx_2.ui.data_entry;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.dataentryformipnx_2.R;
 import com.google.android.material.textfield.TextInputLayout;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class Data_Entry extends Fragment {
 
 
@@ -27,10 +30,15 @@ public class Data_Entry extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
        final View view = inflater.inflate(R.layout.fragment_data_entry, container,false);
 
+        SharedPreferences pref = getContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+        final SharedPreferences.Editor editor = pref.edit();
+
        Button preventive = (Button) view.findViewById(R.id.btn_preventive);
                preventive.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
+               editor.putString("sheetName", "preventive");
+               editor.apply();
                Intent preventiveIntent = new Intent(getContext(), PreventiveMaintenance.class);
                startActivity(preventiveIntent);
 
@@ -41,6 +49,8 @@ public class Data_Entry extends Fragment {
         corrective.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                editor.putString("sheetName", "corrective");
+                editor.apply();
                 Intent correctiveIntent = new Intent(getContext(), CorrectiveMaintenance.class);
                 startActivity(correctiveIntent);
 
