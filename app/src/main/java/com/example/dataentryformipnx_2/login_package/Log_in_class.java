@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -24,6 +25,8 @@ public class Log_in_class extends AppCompatActivity {
     private Button btn_login;
 
     private FirebaseAuth firebaseAuth;
+
+    String message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,8 @@ public class Log_in_class extends AppCompatActivity {
         });
 
         updateUI();
+        SharedPreferences prefs = getSharedPreferences("MyPref", MODE_PRIVATE);
+        message = prefs.getString("keyName", null);
 
 
 
@@ -59,8 +64,15 @@ public class Log_in_class extends AppCompatActivity {
 
         if (firebaseAuth.getCurrentUser() != null){
 
-            Intent mainIntent = new Intent(Log_in_class.this, MainActivity.class);
-            startActivity(mainIntent);
+//            if(message != null) {
+                Intent mainIntent = new Intent(Log_in_class.this, MainActivity.class);
+                startActivity(mainIntent);
+                finish();
+//            } else {
+//                Intent mainIntent = new Intent(Log_in_class.this, Choose.class);
+//                startActivity(mainIntent);
+
+//            }
         }
     }
 
@@ -80,7 +92,7 @@ public class Log_in_class extends AppCompatActivity {
                 if(task.isSuccessful()){
                     Intent chooseIntent = new Intent(Log_in_class.this, Choose.class);
                     startActivity(chooseIntent);
-//                    finish();
+                    finish();
                     Toast.makeText(Log_in_class.this, "Login Successful", Toast.LENGTH_SHORT).show();
 
                 } else {
