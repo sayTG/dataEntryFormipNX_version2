@@ -2,7 +2,9 @@ package com.example.dataentryformipnx_2.ui.remediation;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -55,12 +57,15 @@ public class Remediation extends Fragment {
 
     Bitmap rBitMap;
 
-    String email;
+    String email, message;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_remediation, container,false);
+
+        SharedPreferences prefs = getActivity().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        message = prefs.getString("keyName", null);
 
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
@@ -88,7 +93,16 @@ public class Remediation extends Fragment {
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addItemToSheet();
+                switch (message) {
+                    case "PrecPearl":
+                    case "Sumarus":
+                    case "Waasek":
+                       Toast.makeText(getContext(), "You are not allowed to post on this sheet \n Please use preventive sheet", Toast.LENGTH_LONG).show();
+                       break;
+                    case "Others":
+                        addItemToSheet();
+                        break;
+                }
 
             }
         });
