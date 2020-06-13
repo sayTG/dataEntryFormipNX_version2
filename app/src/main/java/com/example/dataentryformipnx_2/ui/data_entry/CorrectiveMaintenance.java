@@ -89,13 +89,10 @@ public class CorrectiveMaintenance extends AppCompatActivity {
 
         email= firebaseAuth.getCurrentUser().getEmail();
 
-//        Intent intent = getIntent();
-//        message = intent.getStringExtra("keyName") ;
         SharedPreferences prefs = getSharedPreferences("MyPref", MODE_PRIVATE);
         message = prefs.getString("keyName", null);
         sheetMessage = prefs.getString("sheetName", null);
 
-//        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
         if(message == null){
             Toast.makeText(getApplicationContext(), "You have not chosen where you belong to", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(CorrectiveMaintenance.this, Choose.class);
