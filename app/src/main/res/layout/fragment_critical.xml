@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.critical.Critical"
     android:orientation="vertical"
     android:padding="20dp">
@@ -17,7 +18,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/text_location"
-        android:hint="@string/location">
+        android:hint="@string/location"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -29,7 +35,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/text_risk"
         android:layout_marginTop="5dp"
-        android:hint="@string/what_is_the_risk">
+        android:hint="@string/what_is_the_risk"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -41,7 +52,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/text_element_affected"
         android:layout_marginTop="5dp"
-        android:hint="@string/element_affected">
+        android:hint="@string/element_affected"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -64,8 +80,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/save"
-        android:background="@drawable/btn_resource"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        style="@style/Widget.MaterialComponents.Button"
+        app:cornerRadius="10dp"
+        app:strokeColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:padding="10dp" />
 
 
 

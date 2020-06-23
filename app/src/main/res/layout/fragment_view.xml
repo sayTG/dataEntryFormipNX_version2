@@ -16,7 +16,11 @@
         android:layout_height="wrap_content"
         android:text="View Corrective"
         android:background="@drawable/btn_resource"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="100dp"
+        style="@style/Widget.MaterialComponents.Button"
+        app:cornerRadius="10dp"
+        app:strokeColor="@color/colorPrimary"
+        android:padding="10dp" />
 
     <Button
         android:id="@+id/btn_preventive"
@@ -24,7 +28,11 @@
         android:layout_height="wrap_content"
         android:text="View Preventive"
         android:background="@drawable/btn_resource"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        style="@style/Widget.MaterialComponents.Button"
+        app:cornerRadius="10dp"
+        app:strokeColor="@color/colorPrimary"
+        android:padding="10dp"/>
 
     <Button
         android:id="@+id/btn_remediation"
@@ -32,7 +40,11 @@
         android:layout_height="wrap_content"
         android:text="View Remediation"
         android:background="@drawable/btn_resource"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        style="@style/Widget.MaterialComponents.Button"
+        app:cornerRadius="10dp"
+        app:strokeColor="@color/colorPrimary"
+        android:padding="10dp"/>
 
     <Button
         android:id="@+id/btn_critical"
@@ -40,5 +52,9 @@
         android:layout_height="wrap_content"
         android:text="View Critical"
         android:background="@drawable/btn_resource"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        style="@style/Widget.MaterialComponents.Button"
+        app:cornerRadius="10dp"
+        app:strokeColor="@color/colorPrimary"
+        android:padding="10dp"/>
 </LinearLayout>
