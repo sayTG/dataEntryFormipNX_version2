@@ -27,7 +27,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/text_location"
-                android:hint="Location">
+                android:hint="Location"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -39,7 +44,12 @@
                 android:layout_height="match_parent"
                 android:id="@+id/text_observation"
                 android:hint="Observation"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -51,7 +61,12 @@
                 android:layout_height="match_parent"
                 android:id="@+id/text_latitude"
                 android:hint="Latitude"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -64,7 +79,12 @@
                 android:layout_height="match_parent"
                 android:id="@+id/text_logitude"
                 android:hint="Logitude"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -77,7 +97,12 @@
                 android:layout_height="match_parent"
                 android:id="@+id/text_recommendation"
                 android:hint="Recommendation"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -89,7 +114,12 @@
                 android:layout_height="match_parent"
                 android:id="@+id/text_status"
                 android:hint="Status(minor, major, critical)"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -101,7 +131,12 @@
                 android:layout_height="match_parent"
                 android:id="@+id/text_element_affected"
                 android:hint="Element(s) Affected"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -123,6 +158,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Save"
-        android:background="@drawable/btn_resource"/>
+        style="@style/Widget.MaterialComponents.Button"
+        app:cornerRadius="10dp"
+        app:strokeColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:padding="10dp"/>
 
 </LinearLayout>

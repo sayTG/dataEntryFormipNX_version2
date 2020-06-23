@@ -4,13 +4,29 @@
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardBackgroundColor="#D50000"
+    app:cardBackgroundColor="#808080"
     app:cardElevation="10dp"
-    app:cardCornerRadius="20dp">
+    app:cardCornerRadius="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <View
+        android:id="@+id/top_view"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"/>
+
+    <View
+        android:id="@+id/spiral_view"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/wave"
+        android:layout_below="@id/top_view"/>
 
         <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -24,11 +40,11 @@
                 android:textSize="25sp"
                 android:layout_marginTop="10dp"
                 android:textColor="#ffffff"
-                android:textStyle="bold"/>
+                android:textStyle="italic"/>
 
             <TextView
                 android:id="@+id/text_mololuwa"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/arogbodo_mololuwa"
                 android:layout_marginTop="10dp"
@@ -38,7 +54,7 @@
 
             <TextView
                 android:id="@+id/text_tg"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/busari_thankgod"
                 android:layout_marginTop="10dp"
@@ -47,4 +63,5 @@
                 android:textStyle="bold"/>
 
         </LinearLayout>
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>

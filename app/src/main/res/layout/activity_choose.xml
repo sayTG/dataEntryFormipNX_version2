@@ -16,7 +16,12 @@
         android:layout_height="wrap_content"
         android:text="@string/prec_pearl"
         android:background="@drawable/btn_resource"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="100dp"
+        style="@style/Widget.MaterialComponents.Button"
+        app:cornerRadius="10dp"
+        app:strokeColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:padding="10dp"/>
 
     <Button
         android:id="@+id/btn_summarus"
@@ -24,7 +29,12 @@
         android:layout_height="wrap_content"
         android:text="@string/sumarus"
         android:background="@drawable/btn_resource"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:cornerRadius="10dp"
+        app:strokeColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:padding="10dp"/>
 
     <Button
         android:id="@+id/btn_waasek"
@@ -32,7 +42,12 @@
         android:layout_height="wrap_content"
         android:text="@string/waasek"
         android:background="@drawable/btn_resource"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        style="@style/Widget.MaterialComponents.Button"
+        app:cornerRadius="10dp"
+        app:strokeColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:padding="10dp"/>
 
     <Button
         android:id="@+id/btn_others"
@@ -40,5 +55,10 @@
         android:layout_height="wrap_content"
         android:text="@string/others"
         android:background="@drawable/btn_resource"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:cornerRadius="10dp"
+        app:strokeColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:padding="10dp"/>
 </LinearLayout>

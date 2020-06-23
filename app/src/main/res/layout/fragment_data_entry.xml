@@ -16,15 +16,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/corrective_maintenance"
-        android:background="@drawable/btn_resource"/>
+        style="@style/Widget.MaterialComponents.Button"
+        app:cornerRadius="10dp"
+        app:strokeColor="@color/colorPrimary"
+        android:padding="10dp"/>
 
     <Button
         android:id="@+id/btn_preventive"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/preventive_maintenance"
-        android:background="@drawable/btn_resource"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        style="@style/Widget.MaterialComponents.Button"
+        app:cornerRadius="10dp"
+        app:strokeColor="@color/colorPrimary"
+        android:padding="10dp"/>
 
 
 </LinearLayout>
