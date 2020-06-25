@@ -12,6 +12,8 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
@@ -20,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -32,6 +35,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.dataentryformipnx_2.MainActivity;
 import com.example.dataentryformipnx_2.R;
+import com.example.dataentryformipnx_2.SendGridAsyncTask;
 import com.example.dataentryformipnx_2.login_package.Choose;
 import com.example.dataentryformipnx_2.ui.data_entry.CorrectiveMaintenance;
 import com.google.android.material.textfield.TextInputLayout;
@@ -40,6 +44,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 
 
@@ -65,6 +70,8 @@ public class Critical extends Fragment {
     final String others = "https://script.google.com/macros/s/AKfycbzNCKkM_wXL94pt-XozBJADGxVUHJLLpwTldE08gLvSWag0ZaY/exec";
 
     String updatedUrl, message;
+
+    String body, subject;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -107,10 +114,28 @@ public class Critical extends Fragment {
         btn_img = (ImageButton)view.findViewById(R.id.btn_img);
         btn_save = (Button)view.findViewById(R.id.btn_save);
 
+        final String[] to = new String[]{"busarithienkie28@gmail.com", "aoyebanji@ipnxnigeria.net"};
+
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                body =  "Risk: " + text_risk.getEditText().getText().toString().trim() + "\nElement Affected: "
+                        + text_element.getEditText().getText().toString().trim();
+
+                subject = "ipNX: Critical/Urgent Attention Needed @ " + text_location.getEditText().getText().toString().trim();
+
                 addItemToSheet();
+                Handler handler = new Handler(Looper.getMainLooper());
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        for(int i = 0; i < to.length; i++) {
+                            sendGridMail("busarithienkie@gmail.com", to[i],
+                                    subject, body);
+                        }
+                    }
+                });
 
             }
         });
@@ -124,6 +149,23 @@ public class Critical extends Fragment {
 
 
         return view;
+    }
+
+    private void sendGridMail(String from, String to, String subject, String mailBody) {
+        Hashtable<String, String > params = new Hashtable<>();
+        params.put("to", to);
+        params.put("from", from);
+        params.put("subject", subject);
+        params.put("text", mailBody);
+
+
+        SendGridAsyncTask email = new SendGridAsyncTask();
+        try{
+            email.execute(params);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     private void addItemToSheet() {
