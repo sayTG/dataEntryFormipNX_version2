@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
@@ -40,11 +41,19 @@ import com.example.dataentryformipnx_2.login_package.Choose;
 import com.example.dataentryformipnx_2.ui.data_entry.CorrectiveMaintenance;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 
 
@@ -56,6 +65,7 @@ public class Critical extends Fragment {
 
     ImageButton btn_img;
 
+
     private int PICK_IMAGE_REQUEST = 1;
 
     String sUserImage ;
@@ -63,6 +73,8 @@ public class Critical extends Fragment {
     Bitmap rBitMap;
 
     String email;
+
+    DatabaseReference databaseReference ;
 
     final String precPearl = "https://script.google.com/macros/s/AKfycbxjpctS3flQQeM9ftp39aouJbpXYWkt7xJvYeXbKAsy9VNOAY0/exec";
     final String sumarus = "https://script.google.com/macros/s/AKfycbxABv4KNCtwvK-OEDLxWqIbH49_zcm2JID0mc1_xp3HjpvWDv4/exec" ;
@@ -84,6 +96,8 @@ public class Critical extends Fragment {
 
         SharedPreferences prefs = getActivity().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         message = prefs.getString("keyName", null);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("email");
 
         if(message == null){
             Toast.makeText(getContext(), "You have not chosen where you belong to", Toast.LENGTH_LONG).show();
@@ -114,28 +128,19 @@ public class Critical extends Fragment {
         btn_img = (ImageButton)view.findViewById(R.id.btn_img);
         btn_save = (Button)view.findViewById(R.id.btn_save);
 
-        final String[] to = new String[]{"busarithienkie28@gmail.com", "aoyebanji@ipnxnigeria.net"};
+
+
 
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                checkTextBox();
+                if (checkTextBox()){
+//                    btn_save.setEnabled(true);
+                    addItemToSheet();
+                    sendMail();
+                }
 
-                body =  "Risk: " + text_risk.getEditText().getText().toString().trim() + "\nElement Affected: "
-                        + text_element.getEditText().getText().toString().trim();
-
-                subject = "ipNX: Critical/Urgent Attention Needed @ " + text_location.getEditText().getText().toString().trim();
-
-                addItemToSheet();
-                Handler handler = new Handler(Looper.getMainLooper());
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        for(int i = 0; i < to.length; i++) {
-                            sendGridMail("busarithienkie@gmail.com", to[i],
-                                    subject, body);
-                        }
-                    }
-                });
 
             }
         });
@@ -287,4 +292,59 @@ public class Critical extends Fragment {
         String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
         return encodedImage;
     }
+
+    private void sendMail(){
+
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+
+                         final String newEmail = dataSnapshot1.getValue(String.class);
+
+                        Log.d("Email Added", newEmail);
+
+                        body =  "Location: " + text_location.getEditText().getText().toString().trim() +
+                                "\nRisk: " + text_risk.getEditText().getText().toString().trim() + "\nElement Affected: "
+                                + text_element.getEditText().getText().toString().trim() + "\nSent by: " + email;
+
+                        subject = "ipNX: Critical/Urgent Attention Needed at " + text_location.getEditText().getText().toString().trim();
+
+                        Handler handler = new Handler(Looper.getMainLooper());
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                    sendGridMail("busarithienkie@gmail.com", newEmail,
+                                            subject, body);
+                            }
+                        });
+
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+//        final String[] to = new String[]{"busarithienkie28@gmail.com", "inframtceintern@ipnxnigeria.net"};
+
+    }
+
+    private Boolean checkTextBox(){
+
+        if (text_location.getEditText().getText().toString().isEmpty() ||
+                text_risk.getEditText().getText().toString().isEmpty() ||
+                text_element.getEditText().getText().toString().isEmpty()){
+            Toast.makeText(getContext(), "Please fill in the required fields", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else
+            return true;
+    }
+
 }

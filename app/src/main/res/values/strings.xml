@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DataEntryFormipNX_2</string>
+    <string name="app_name">ipNX DataForm</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">DASHBOARD</string>
@@ -21,7 +21,7 @@
     <string name="prec_pearl">PREC PEARL</string>
     <string name="sumarus">SUMARUS</string>
     <string name="waasek">WAASEK</string>
-    <string name="others">OTHERS</string>
+    <string name="others">OSP\'s AND OTHERS</string>
     <string name="email">Email
     </string>
     <string name="password">Password
@@ -66,4 +66,17 @@
     <string name="preventive_maintenance">Preventive Maintenance</string>
     <string name="view_entries">View Entries</string>
     <string name="log_out">Log out</string>
+
+    <string name="spinner_title">Select Affected Element</string>
+    <string name="if_others_specify_here">If others, specify here</string>
+    <string-array name="element_array">
+        <item>Select Affected Element</item>
+        <item>Hand Hole</item>
+        <item>Closure</item>
+        <item>MST</item>
+        <item>Pole</item>
+        <item>Splitter</item>
+        <item>Fiber</item>
+        <item>Others</item>
+    </string-array>
 </resources>

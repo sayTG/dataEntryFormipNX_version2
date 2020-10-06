@@ -15,10 +15,13 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -35,15 +38,13 @@ import com.example.dataentryformipnx_2.login_package.Choose;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
-import org.w3c.dom.Text;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class PreventiveMaintenance extends AppCompatActivity {
-    private TextInputLayout text_issue, text_risk, text_location, text_element_affected, text_measures;
+    private TextInputLayout text_issue, text_risk, text_location, text_measures, textbox_element_affected;
 
     private RadioGroup radiogroup_1, radiogroup_2;
     private RadioButton radio_vi, radio_lekki, radio_ikoyi, radio_mainland, radio_island,
@@ -71,6 +72,11 @@ public class PreventiveMaintenance extends AppCompatActivity {
 
     String updatedUrl;
 
+    String sElement;
+
+    String text_element_affected;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +93,15 @@ public class PreventiveMaintenance extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("MyPref", MODE_PRIVATE);
         message = prefs.getString("keyName", null);
         sheetMessage = prefs.getString("sheetName", null);
+
+        Spinner spinner = (Spinner)findViewById(R.id.textsp_element_affected);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.element_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setPrompt("Select Affected Element");
+        spinner.setAdapter(adapter);
+
+
 
         if(message == null){
             Toast.makeText(getApplicationContext(), "You have not chosen where you belong to", Toast.LENGTH_LONG).show();
@@ -113,7 +128,7 @@ public class PreventiveMaintenance extends AppCompatActivity {
         text_issue = (TextInputLayout)findViewById(R.id.text_issue);
         text_risk = (TextInputLayout)findViewById(R.id.text_risk);
         text_location = (TextInputLayout)findViewById(R.id.text_location);
-        text_element_affected = (TextInputLayout)findViewById(R.id.text_element_affected);
+        textbox_element_affected = (TextInputLayout)findViewById(R.id.textbox_element_affected);
         text_measures = (TextInputLayout)findViewById(R.id.text_measures);
 
         radio_vi = (RadioButton)findViewById(R.id.radio_vi);
@@ -130,6 +145,56 @@ public class PreventiveMaintenance extends AppCompatActivity {
 
         btn_save = (Button)findViewById(R.id.btn_save);
         btn_img = (ImageButton)findViewById(R.id.btn_img);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                textbox_element_affected.setEnabled(false);
+                switch (position){
+                    case 0:
+                        btn_save.setEnabled(false);
+                        break;
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                        btn_save.setEnabled(true);
+                        text_element_affected = parent.getItemAtPosition(position).toString();
+                        Toast.makeText(getApplicationContext(), "Selected: " + text_element_affected , Toast.LENGTH_SHORT).show();
+                        break;
+                    case 7:
+                        btn_save.setEnabled(true);
+                        textbox_element_affected.setEnabled(true);
+                        text_element_affected = textbox_element_affected.getEditText().getText().toString().trim();
+                        break;
+                }
+
+//                if (position > 0 && position < 7){
+//                    btn_save.setEnabled(true);
+//                    text_element_affected = parent.getItemAtPosition(position).toString();
+//                    Toast.makeText(getApplicationContext(), "Selected: " + text_element_affected , Toast.LENGTH_SHORT).show();
+//                }
+//                else {
+//                    if (parent.getItemAtPosition(0).toString().equals("Select Affected Element")){
+//                        btn_save.setEnabled(false);
+//                    }
+//                    if (parent.getItemAtPosition(7).toString().equals("Others")) {
+//                    btn_save.setEnabled(true);
+//                    textbox_element_affected.setEnabled(true);
+//                    text_element_affected = textbox_element_affected.getEditText().getText().toString().trim();
+//                    }
+//                }
+//                Toast.makeText(getApplicationContext(), text_element_affected, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
 
@@ -190,10 +255,12 @@ public class PreventiveMaintenance extends AppCompatActivity {
                 } else if (TextUtils.isEmpty(text_location.getEditText().getText())){
                     text_location.setError("*Yet to be filled");
                     btn_save.setEnabled(false);
-                } else if (TextUtils.isEmpty(text_element_affected.getEditText().getText())){
-                    text_element_affected.setError("*Yet to be filled");
-                    btn_save.setEnabled(false);
-                } else if (TextUtils.isEmpty(text_measures.getEditText().getText())){
+                }
+//                else if (TextUtils.isEmpty(text_element_affected.getEditText().getText())){
+//                    text_element_affected.setError("*Yet to be filled");
+//                    btn_save.setEnabled(false);
+//                }
+                else if (TextUtils.isEmpty(text_measures.getEditText().getText())){
                     text_measures.setError("*Yet to be filled");
                     btn_save.setEnabled(false);
                 } else {
@@ -210,10 +277,14 @@ public class PreventiveMaintenance extends AppCompatActivity {
         final String sIssue = text_issue.getEditText().getText().toString().trim();
         final String sRisk = text_risk.getEditText().getText().toString().trim();
         final String sLocation = text_location.getEditText().getText().toString().trim();
-        final String sElement = text_element_affected.getEditText().getText().toString().trim();
+        sElement = text_element_affected;
         final String sMeasures = text_measures.getEditText().getText().toString().trim();
         final String sType = regionType;
         final String sName = regionName;
+
+        if(sElement.equals("")){
+            sElement = textbox_element_affected.getEditText().getText().toString().trim();
+        }
 
         Log.e("null", "values" + sUserImage);
 
