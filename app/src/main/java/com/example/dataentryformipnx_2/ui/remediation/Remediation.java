@@ -5,7 +5,11 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -16,10 +20,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -45,7 +52,9 @@ import java.util.Map;
 
 public class Remediation extends Fragment {
 
-    TextInputLayout text_location, text_observation, text_latitude, text_longitude, text_recommendation, text_status, text_element;
+    TextInputLayout text_location, text_observation, text_recommendation, text_status, text_element;
+
+    TextView text_latitude, text_longitude;
 
     Button btn_save;
 
@@ -59,6 +68,7 @@ public class Remediation extends Fragment {
 
     String email, message;
 
+    private GpsTracker gpsTracker;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -73,8 +83,10 @@ public class Remediation extends Fragment {
 
         text_location = (TextInputLayout)view.findViewById(R.id.text_location);
         text_observation = (TextInputLayout)view.findViewById(R.id.text_observation);
-        text_latitude = (TextInputLayout)view.findViewById(R.id.text_latitude);
-        text_longitude = (TextInputLayout)view.findViewById(R.id.text_logitude);
+       /* text_latitude = (TextInputLayout)view.findViewById(R.id.text_latitude);
+        text_longitude = (TextInputLayout)view.findViewById(R.id.text_logitude);*/
+        text_longitude = (TextView)view.findViewById(R.id.text_longitude);
+        text_latitude =  (TextView)view.findViewById(R.id.text_latitude);
         text_recommendation = (TextInputLayout)view.findViewById(R.id.text_recommendation);
         text_status = (TextInputLayout)view.findViewById(R.id.text_status);
         text_element = (TextInputLayout)view.findViewById(R.id.text_element_affected);
@@ -107,15 +119,36 @@ public class Remediation extends Fragment {
             }
         });
 
+        try {
+            if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 101);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        getLocation();
 
         return view;
+    }
+
+    public void getLocation(){
+        gpsTracker = new GpsTracker(getContext());
+        if(gpsTracker.canGetLocation()){
+            double latitude = gpsTracker.getLatitude();
+            double longitude = gpsTracker.getLongitude();
+            text_latitude.setText(String.valueOf(latitude));
+            text_longitude.setText(String.valueOf(longitude));
+        }else{
+            gpsTracker.showSettingsAlert();
+        }
     }
 
     private void addItemToSheet() {
         final String sLocation = text_location.getEditText().getText().toString().trim();
         final String sObservation = text_observation.getEditText().getText().toString().trim();
-        final String sLatitude = text_latitude.getEditText().getText().toString().trim();
-        final String sLongitude = text_longitude.getEditText().getText().toString().trim();
+        final String sLatitude = text_latitude.getText().toString().trim();
+        final String sLongitude = text_longitude.getText().toString().trim();
         final String sRecommendation = text_recommendation.getEditText().getText().toString().trim();
         final String sStatus = text_status.getEditText().getText().toString().trim();
         final String sElement = text_element.getEditText().getText().toString().trim();

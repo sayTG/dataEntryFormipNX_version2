@@ -17,5 +17,30 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="MyDialogTheme" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:background">#ffffff</item>
+        <item name="android:textColorPrimary">#ffffff</item>
+        <item name="android:backgroundTint">#D50000</item>
+
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+        <!-- Style for negative button -->
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+    </style>
+
+    <style name="PositiveButtonStyle" parent="@style/Widget.AppCompat.Button">
+        <!-- text color for the button -->
+        <item name="android:textColor">#D50000</item>
+        <!-- Background tint for the button -->
+        <item name="backgroundTint">#ffffff</item>
+    </style>
+
+    <style name="NegativeButtonStyle" parent="@style/Widget.AppCompat.Button">
+        <!-- text color for the button -->
+        <item name="android:textColor">#D50000</item>
+        <!-- Background tint for the button -->
+        <item name="backgroundTint">#ffffff</item>
+    </style>
+
 
 </resources>
